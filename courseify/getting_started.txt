@@ -1,0 +1,36 @@
+resources:
+1) If youre a beginner,I recommend you to study django from Corey Schafer's playlist
+2) As a practice project, "https://www.youtube.com/watch?v=zu2PBUHMEew" is a very similar project to ours.It's better to study that first
+3) To learn more about stripe API with django, refer this video :"https://www.youtube.com/watch?v=6aQanCJZx04"
+4) To Study usage of google drive API with python,you may refer the video "https://youtu.be/9OYYgJUAw-w" 
+
+Tasks to complete:
+
+1) Better FrontEnd
+2) Cookies to remember the gmail id of the owner where all courses are stored.
+
+I hope you guys know about admin page ( http://127.0.0.1:8000/admin/ )
+id: admin
+password: ab12345678
+
+Database structure:
+
+Course Table:
+Course_name  |  Description   |   price
+
+CourseTransactions table:  (stores info about each transaction done by a user for a course,as soon as transaction is done,
+Google drive permission is given to the user to access the course)
+
+course_name(foreignkey to course table)  |  user_name(foreignkey to users table)
+
+Lesson table : (Inside courses,we have lessons)
+course(foreignkey)  |  Lesson_name  | position  |  video_url  |  thumbnail
+
+Payment table: (stores the stripe_charge_id and other details of transaction)
+stripe_charge_id  |  user(foreign key)  |  course_name(foreignkey)  |  amount  |  timestamp
+
+Profile Table:
+User(foreignkey)  |  image
+
+User's username,password,email details are stored in User table provided by django
+

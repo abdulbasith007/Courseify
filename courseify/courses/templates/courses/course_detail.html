@@ -1,0 +1,24 @@
+{% extends 'courses/base.html' %}
+
+{% block content %}
+
+<h1>{{object.course_name}}</h1>
+{% ifnotequal object.price 0 %}
+{% if purchased_this %}
+You've Already Purchased This Courses
+{% else %}
+<h1>{{object.price}}</h1>
+<a href="{%  url 'payments' object.pk %}">Purchase</a>
+{% endif %}
+{% else %}
+<small>Free</small>
+{% endifnotequal %}
+{% for l in object.lessons %}
+<br>
+<img src="{{l.thumbnail.url}}">
+
+<!--This Link should be provided only if the users has purchased this course or the course is free-->
+
+<a href="{{l.video_url}}">{{l.lesson_name}}</a>
+{% endfor %}
+{% endblock %}

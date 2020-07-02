@@ -1,0 +1,11 @@
+{% extends 'courses/base.html' %}
+
+{% block content %}
+
+{% for c in course_list %}
+<a href="{% url 'courses:courseDetail' c.course_name.pk %}">{{c.course_name}}</a>
+<p>{{c.course_name.description}}</p>
+<br>
+{% endfor %}
+
+{% endblock %}

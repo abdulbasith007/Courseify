@@ -1,0 +1,22 @@
+{% extends 'courses/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<center>
+    <img src="{{request.user.profile.image.url}}">
+    <h1>
+        {{request.user}}
+    </h1>
+    <h1>{{request.user.email}}</h1>
+</center>
+<br>
+<form method="POST" enctype="multipart/form-data">{% csrf_token %}
+    {{u_form|crispy}}
+    {{p_form|crispy}}
+    <button type="submit">Update</button>
+</form>
+{% if messages %}
+{% for m in messages %}
+<div class="alert alert-{{m.tags}}">{{m}}</div>
+{% endfor %}
+{% endif %}
+{% endblock %}

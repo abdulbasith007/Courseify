@@ -1,0 +1,20 @@
+{% extends 'courses/base.html' %}
+
+{% block content %}
+
+{% if request.user.is_authenticated %}
+Hello {{request.user}}
+<a href="{% url 'logout' %}">Logout</a>
+<a href="{% url 'courses:purchased_course_list' %}">My Course List</a>
+<a href="{% url 'profile' %}">My Profile</a>
+{% else %}
+<a href="{% url 'login' %}">Login</a>
+{% endif %}
+<br>
+{% for c in object_list %}
+<a href="{% url 'courses:courseDetail' c.pk %}">{{c.course_name}}</a>
+<p>{{c.description}}</p>
+<small>{{c.price}}</small>
+<br>
+{% endfor %}
+{% endblock %}

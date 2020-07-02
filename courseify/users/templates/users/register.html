@@ -1,0 +1,15 @@
+{% extends 'courses/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<form method="POST">{% csrf_token %}
+    {{form|crispy}}
+    <button type="submit">Register</button>
+</form>
+
+{% if messages %}
+{% for m in messages %}
+<div class="alert alert-{{m.tags}}">{{m}}</div>
+{% endfor %}
+{% endif %}
+
+{% endblock %}
