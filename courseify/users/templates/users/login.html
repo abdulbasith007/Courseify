@@ -4,7 +4,9 @@
 <form method="POST">{% csrf_token %}
     {{form|crispy}}
     <button type="submit">Login</button>
+    <a href="/register"> Don't have an account? Create one here</a>
 </form>
+
 <br>
 {% if messages %}
 {% for m in messages %}
