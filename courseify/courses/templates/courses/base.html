@@ -1,21 +1,331 @@
-{% load static %}
+<!-- {% load static %} -->
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-</head>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/mailtoharshit/San-Francisco-Font-/sanfrancisco.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+      * {
+        --primary-color: rgb(254, 242, 0);
+      }
 
-<body>
-    <div class="container">
-        {% block content %}
-        {% endblock %}
+      /* Underline CSS */
+
+      body {
+        background-color: #333;
+        font-family: "San Francisco";
+      }
+
+      nav {
+        background-color: transparent;
+      }
+
+      nav a {
+        color: white;
+      }
+
+      .navbar-brand {
+        font-family: "San Francisco";
+        text-transform: uppercase;
+        font-size: 4rem;
+        text-decoration: underline var(--primary-color);
+        text-underline-position: under;
+        padding-bottom: 50px;
+      }
+
+      .navbar a:hover {
+        color: white;
+        text-decoration: underline var(--primary-color);
+        text-underline-position: under;
+      }
+
+      .dropdown-menu a:hover {
+        color: black !important;
+        text-decoration: underline var(--primary-color);
+        text-underline-position: under;
+      }
+
+      .navbar li {
+        font-size: 2rem;
+        text-transform: uppercase;
+        margin-right: 2rem;
+      }
+
+      .btn {
+        background-color: #333;
+        color: white;
+      }
+
+      .btn:hover {
+        background-color: var(--primary-color);
+      }
+
+      .btn1 {
+        border: solid var(--primary-color);
+        border-radius: 10px;
+      }
+
+      .btn1:hover {
+        color: #333;
+        border: solid #333;
+        border-radius: 10px;
+      }
+
+      .navbar-toggler {
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <a class="navbar-brand" href="#">Courseify</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <form class="form-inline my-2 my-lg-0">
+          <div class="input-group">
+            <input
+              class="form-control mr-sm-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <div class="input-group-append">
+              <button class="btn btn1 my-2 my-sm-0" type="submit">
+                Search
+              </button>
+            </div>
+          </div>
+        </form>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active"></li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#"
+              >Home <span class="sr-only">(current)</span></a
+            >
+          </li>
+
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle clickable"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Profile
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a
+                class="dropdown-item"
+                href="#"
+                data-toggle="modal"
+                data-target="#modalLoginForm"
+              >
+                <i class="fa fa-sign-in" aria-hidden="true"></i> Login
+              </a>
+              <a
+                class="dropdown-item"
+                href="#"
+                data-toggle="modal"
+                data-target="#modalRegisterForm"
+              >
+                <i class="fa fa-user-plus" aria-hidden="true"></i> Sign Up</a
+              >
+              <a class="dropdown-item" href="#">
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                Logout</a
+              >
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Login Modal -->
+    <div
+      class="modal fade"
+      id="modalLoginForm"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="myModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <h4
+              class="modal-title w-100"
+              style="
+                text-decoration: underline var(--primary-color);
+                text-underline-position: under;
+                text-transform: uppercase;
+                font-size: 2.5rem;
+              "
+            >
+              Sign in
+            </h4>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body mx-3">
+            <div class="md-form mb-5 input-group">
+              <span class="input-group-text"><i class="fa-envelope"></i></span>
+
+              <input
+                type="email"
+                id="defaultForm-email"
+                class="form-control validate"
+                placeholder="E-mail"
+              />
+            </div>
+
+            <div class="md-form mb-4 input-group">
+              <span class="input-group-text"
+                ><i class="fa fa-lock" aria-hidden="true"></i
+              ></span>
+              <input
+                type="password"
+                id="defaultForm-pass"
+                class="form-control validate"
+                placeholder="Password"
+              />
+            </div>
+          </div>
+          <div class="modal-footer d-flex justify-content-center">
+            <button class="btn btn-default btn-block">Login</button>
+          </div>
+        </div>
+      </div>
     </div>
-</body>
 
+    <div
+      class="modal fade"
+      id="modalRegisterForm"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="myModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <h4
+              class="modal-title w-100"
+              style="
+                text-decoration: underline var(--primary-color);
+                text-underline-position: under;
+                text-transform: uppercase;
+                font-size: 2.5rem;
+              "
+            >
+              Sign up
+            </h4>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body mx-3">
+            <div class="md-form mb-5 input-group">
+              <span class="input-group-text"><i class="fa fa-user"></i></span>
+              <input
+                type="text"
+                id="orangeForm-name"
+                class="form-control validate"
+                placeholder="Name"
+              />
+            </div>
+            <div class="md-form mb-5 input-group">
+              <span class="input-group-text"><i class="fa-envelope"></i></span>
+              <input
+                type="email"
+                id="orangeForm-email"
+                class="form-control validate"
+                placeholder="E-mail"
+              />
+            </div>
+
+            <div class="md-form mb-4 input-group">
+              <span class="input-group-text"><i class="fa fa-lock"></i></span>
+              <input
+                type="password"
+                id="orangeForm-pass"
+                class="form-control validate"
+                placeholder="Password"
+              />
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+              <button class="btn btn-default btn-block">Sign up</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="container">
+      {% block content %} {% endblock %}
+    </div> -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+      integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
+      integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/courseify/courses/static/courses/jquery.min.js"></script>
+    <script src="/courseify/courses/static/courses/skel.min.js"></script>
+    <script src="/courseify/courses/static/courses/main.js"></script>
+    <script src="/courseify/courses/static/courses/jquery.scrolly.min.js"></script>
+    <script src="/courseify/courses/static/courses/skel.min.js"></script>
+    <script src="/courseify/courses/static/courses/util.js"></script>
+  </body>
 </html>
